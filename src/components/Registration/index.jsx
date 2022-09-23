@@ -14,12 +14,13 @@ const Registration = () => {
      }) 
 
      function register (event) {
-       /*  if(user.username==''){
-            const usernameDefault = "jirinka";
-            setUser({...user, username: usernameDefault})
-        } */
-        event.preventDefault()
         
+        if(!user.username){
+            const usernameDefault = "jirinka";
+            setUser({...user, username: "jirinka"})
+        } 
+
+        event.preventDefault()    
         console.log(user);
      }
     /*  function handleChange (e, field) { 
@@ -30,7 +31,7 @@ const Registration = () => {
         <>
         <form>
             <input type="email" placeholder="Email address"
-                onChange={(e) => setUser({...user, email: e.target.value})} required ></input><br></br>
+                onChange={(e) => {setUser({...user, email: e.target.value}); console.log(user.email)}} required ></input><br></br>
             <input  placeholder="User Name"
                 onChange={(e) => setUser({...user, username: e.target.value})} ></input><br></br>
             <input type="password" placeholder="Password"
@@ -41,10 +42,8 @@ const Registration = () => {
             <button type="submit" onClick={register}>Register</button>
         </form>
 
-
         </>
     )
-
 }
 
 export default Registration;
